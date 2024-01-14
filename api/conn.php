@@ -1,20 +1,18 @@
 <?php
-// Dados para a conexão com o banco de dados
-$servername = "192.168.15.86";
-$username = "bebeto";
-$password = "bebeto123";
-$database = "bebeto";
+// Configurações do banco de dados
+$host = $_ENV["DB_HOST"];
+$user = $_ENV["DB_USER"];
+$password = $_ENV["DB_PASSWORD"];
+$name = $_ENV["DB_NAME"];
+$port = $_ENV["DB_PORT"];
 
-// Cria a conexão
-$conn = new mysqli($servername, $username, $password, $database);
+// Conexão com o banco de dados
+$db = new mysqli($host, $user, $password, $name, $port);
 
-// Verifica se ocorreu algum erro na conexão
-if ($conn->connect_error) {
-    die("Falha na conexão: " . $conn->connect_error);
+// Verificar se ocorreu um erro na conexão
+if ($db->connect_error) {
+    die("Erro na conexão com o banco de dados: " . $db->connect_error);
 }
 
-echo "Conexão bem-sucedida";
-
-// Fechar a conexão
-$conn->close();
+// Restante do seu código aqui
 ?>
